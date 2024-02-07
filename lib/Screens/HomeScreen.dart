@@ -13,23 +13,33 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
 
+      backgroundColor: Colors.grey.shade200,
+
       //APPBAR START HERE.......................................................
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.grey.shade200,
+      ),
 
 
       //BODY START HERE.........................................................
-      body: Column(
-        children: [
-          Row(
-            children: [
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12,),
+        child: Column(
 
-              UiHelper.CustomText(),
+          children: [
 
-            ],
-          ),
+            //TODO LIST TEXT AND ICONS IS HERE
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                UiHelper.CustomText(),
+                Icon(Icons.event_note,color: Colors.black54,)
+              ],
+            ),
 
 
-        ],
+          ],
+        ),
       ),
 
 

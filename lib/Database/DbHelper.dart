@@ -59,4 +59,5 @@ class DbHelper {
     var db = await getDb();
     db.delete(TableName,where: "$ColumnId=?",whereArgs: [id.toString()]);
   }
+
 }
