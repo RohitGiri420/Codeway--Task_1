@@ -54,4 +54,9 @@ class DbHelper {
     var db = await getDb();
     await db.update(TableName, todoModel.toMap(),where: "$ColumnId = ${todoModel.id}");
   }
+  
+  Future deleteData(int id) async {
+    var db = await getDb();
+    db.delete(TableName,where: "$ColumnId=?",whereArgs: [id.toString()]);
+  }
 }
