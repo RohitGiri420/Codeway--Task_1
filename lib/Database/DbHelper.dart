@@ -49,4 +49,9 @@ class DbHelper {
     return list;
 
   }
+  
+  Future updateData(TodoModel todoModel) async{
+    var db = await getDb();
+    await db.update(TableName, todoModel.toMap(),where: "$ColumnId = ${todoModel.id}");
+  }
 }
