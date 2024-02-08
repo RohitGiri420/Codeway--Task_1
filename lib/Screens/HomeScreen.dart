@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todoapp/Screens/AddDataScreen.dart';
 import 'package:todoapp/widget/UiHelper.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -81,7 +82,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){},
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => AddDataScreen(),));
+      },
         backgroundColor: Colors.white,
         child: Icon(Icons.add_rounded,color: Colors.black54,),
         shape: OutlineInputBorder(borderRadius: BorderRadius.circular(30),borderSide: BorderSide(color: Colors.white)),
