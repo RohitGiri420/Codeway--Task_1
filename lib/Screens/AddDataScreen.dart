@@ -29,6 +29,8 @@ class _AddDataScreenState extends State<AddDataScreen> {
             UiHelper.CustomTextField("Title",TitleController),
             SizedBox(height: 30,),
             UiHelper.CustomTextField("Description", DescController),
+            SizedBox(height: 30,),
+            UiHelper.CustomButton("Add Note")
 
           ],
         ),
