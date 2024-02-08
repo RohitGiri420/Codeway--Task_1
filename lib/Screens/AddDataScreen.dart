@@ -24,10 +24,12 @@ class _AddDataScreenState extends State<AddDataScreen> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             UiHelper.CustomTextField("Title",TitleController),
-            UiHelper.CustomTextField("Description", DescController)
+            SizedBox(height: 30,),
+            UiHelper.CustomTextField("Description", DescController),
+
           ],
         ),
       ),
