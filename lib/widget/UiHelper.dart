@@ -79,33 +79,36 @@ class UiHelper {
     );
   }
 
-  static CustomButton(String title) {
+  static CustomButton(String title,VoidCallback onpressed) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30),
-      child: Card(
-        shape: OutlineInputBorder(
-            borderRadius: BorderRadius.only(
-                topRight: Radius.circular(13),
-                topLeft: Radius.circular(13),
-                bottomRight: Radius.circular(30),
-                bottomLeft: Radius.circular(30)),
-            borderSide: BorderSide(color: Colors.grey.shade200,width: 0.0)
-        ),
-        elevation:3,
-        child: Container(
+      child: InkWell(
+        onTap: onpressed,
+        child: Card(
+          shape: OutlineInputBorder(
+              borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(13),
+                  topLeft: Radius.circular(13),
+                  bottomRight: Radius.circular(30),
+                  bottomLeft: Radius.circular(30)),
+              borderSide: BorderSide(color: Colors.grey.shade200,width: 0.0)
+          ),
+          elevation:3,
+          child: Container(
 
-          child: Center(child: Text("$title",style: TextStyle(color: Colors.black54),)),
+            child: Center(child: Text("$title",style: TextStyle(color: Colors.black54,fontFamily: 'f1',fontWeight: FontWeight.w700,fontSize: 20),)),
 
-          height: 66,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: Colors.grey.shade300,
-            borderRadius: BorderRadius.only(
-                topRight: Radius.circular(13),
-                topLeft: Radius.circular(13),
-                bottomRight: Radius.circular(30),
-                bottomLeft: Radius.circular(30)),
-            border: Border.all(color: Colors.white54,width: 2)
+            height: 66,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Colors.grey.shade300,
+              borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(13),
+                  topLeft: Radius.circular(13),
+                  bottomRight: Radius.circular(30),
+                  bottomLeft: Radius.circular(30)),
+              border: Border.all(color: Colors.white54,width: 2)
+            ),
           ),
         ),
       ),

@@ -5,7 +5,7 @@ import 'package:path/path.dart';
 import 'package:todoapp/Models/todoModel.dart';
 
 class DbHelper {
-  DbHelper db = DbHelper();
+  static final DbHelper db = DbHelper();
 
   static String TableName = "Todo_Table";
   static String ColumnId = "Column_Id";
@@ -15,7 +15,7 @@ class DbHelper {
   Database? _database;
 
   Future<Database> getDb() async {
-    if (Database != null) {
+    if (_database != null) {
       return _database!;
     } else {
       Directory directory = await getApplicationDocumentsDirectory();
@@ -25,30 +25,29 @@ class DbHelper {
         version: 1,
         onCreate: (db, version) {
           db.execute(
-              "CREATE TABLE $TableName($ColumnId INTEGER AUTOINCREMENT PRIMARY KEY,$ColumnTitle TEXT,$ColumnDesc TEXT)");
+              "CREATE TABLE $TableName($ColumnId INTEGER PRIMARY KEY AUTOINCREMENT,$ColumnTitle TEXT,$ColumnDesc TEXT)");
         },
       );
     }
   }
 
-  Future addData(TodoModel todoModel) async {
+  Future<bool> addData(TodoModel todoModel) async {
     var db = await getDb();
-    db.insert(TableName,todoModel.toMap(),);
+    var check = await db.insert("$TableName",todoModel.toMap(),);
+    return check>0;
   }
 
-  Future<List<TodoModel>> fetchData() async{
+  Future<List<TodoModel>> fetchData()async{
     var db = await getDb();
-    List<TodoModel> list = [];
-    var data = await db.query(TableName);
-
-    for(Map<String,dynamic> eachData in data){
-
-      TodoModel todoModel = TodoModel.formMap(eachData);
-      list.add(todoModel);
+    List<TodoModel> arrlist =[];
+    var data = await db.query("$TableName");
+    for(Map<String,dynamic>eachdata in data){
+      TodoModel todoModel = TodoModel.formMap(eachdata);
+      arrlist.add(todoModel);
     }
-    return list;
-
+    return arrlist;
   }
+
   
   Future updateData(TodoModel todoModel) async{
     var db = await getDb();

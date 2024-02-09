@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:todoapp/Database/DbHelper.dart';
 
 class TodoModel {

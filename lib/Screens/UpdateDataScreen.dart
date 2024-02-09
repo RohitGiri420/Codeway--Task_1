@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todoapp/Models/todoModel.dart';
-import 'package:todoapp/Provider/TodoProvider.dart';
-import 'package:todoapp/widget/UiHelper.dart';
 
-class AddDataScreen extends StatefulWidget {
-  const AddDataScreen({super.key});
+import '../Models/todoModel.dart';
+import '../Provider/TodoProvider.dart';
+import '../widget/UiHelper.dart';
+
+class UpdateData extends StatefulWidget {
+  final int id;
+  const UpdateData({super.key,required this.id});
 
   @override
-  State<AddDataScreen> createState() => _AddDataScreenState();
+  State<UpdateData> createState() => _UpdateDataState();
 }
 
-class _AddDataScreenState extends State<AddDataScreen> {
+class _UpdateDataState extends State<UpdateData> {
 
-  TextEditingController TitleController = TextEditingController();
-  TextEditingController DescController = TextEditingController();
+  TextEditingController UpdatedTitleController = TextEditingController();
+  TextEditingController UpdatedDescController = TextEditingController();
 
-   BottomSheet(){
+  BottomSheet(){
     return showModalBottomSheet(context: context, builder: (context) {
       return Container(
         height: 200,
@@ -35,15 +37,16 @@ class _AddDataScreenState extends State<AddDataScreen> {
 
   }
 
-  addNote(String title, String description){
+  UpdateNote(String title, String desc,int id){
     if(title == ""){
       BottomSheet();
     }
     else{
-      context.read<ToDoProvider>().AddData(TodoModel(title: title, desc: description));
+      context.read<ToDoProvider>().UpdateData(TodoModel(title: title, desc: desc,id: id));
       Navigator.pop(context);
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -58,19 +61,21 @@ class _AddDataScreenState extends State<AddDataScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("ADD NOTES",style: TextStyle(fontSize: 37,fontWeight: FontWeight.w900,fontFamily: 'f1',color: Colors.black54)),
+            Text("UPDATE NOTES",style: TextStyle(fontSize: 37,fontWeight: FontWeight.w900,fontFamily: 'f1',color: Colors.black54)),
             SizedBox(height: 30,),
-            UiHelper.CustomTextField("Title *",TitleController),
+            UiHelper.CustomTextField("Title *",UpdatedTitleController),
             SizedBox(height: 30,),
-            UiHelper.CustomTextField("Description", DescController),
+            UiHelper.CustomTextField("Description", UpdatedDescController),
             SizedBox(height: 30,),
-            UiHelper.CustomButton("Add Note",() {
-              addNote(TitleController.text.toString(),DescController.text.toString());
+            UiHelper.CustomButton("Update Note",() {
+              UpdateNote(UpdatedTitleController.text.toString(), UpdatedDescController.text.toString(),widget.id);
             },),
             SizedBox(height: 100,)
+
           ],
         ),
       ),
+
     );
   }
 }
