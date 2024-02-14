@@ -59,15 +59,15 @@ class _AddDataScreenState extends State<AddDataScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("ADD NOTES",style: TextStyle(fontSize: 37,fontWeight: FontWeight.w900,fontFamily: 'f1',color: Colors.black54)),
-            SizedBox(height: 30,),
+            SizedBox(height: 20,),
             UiHelper.CustomTextField("Title *",TitleController),
-            SizedBox(height: 30,),
+            SizedBox(height: 20,),
             UiHelper.CustomTextField("Description", DescController),
-            SizedBox(height: 30,),
+            SizedBox(height: 20,),
             UiHelper.CustomButton("Add Note",() {
               addNote(TitleController.text.toString(),DescController.text.toString());
             },),
-            SizedBox(height: 100,)
+            SizedBox(height: 80,)
           ],
         ),
       ),

@@ -4,7 +4,6 @@ import 'package:todoapp/Provider/TodoProvider.dart';
 import 'package:todoapp/Screens/AddDataScreen.dart';
 import 'package:todoapp/Screens/UpdateDataScreen.dart';
 import 'package:todoapp/widget/UiHelper.dart';
-
 import '../Models/todoModel.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -27,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Consumer<ToDoProvider>(
       builder: (context, value, child) {
         arrlist = value.FetchData();
+        bool isChecked = false;
       return Scaffold(
         backgroundColor: Colors.grey.shade200,
 
@@ -50,6 +50,28 @@ class _HomeScreenState extends State<HomeScreen> {
 
             children: [
 
+              Container(
+                height: 45,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(50)
+                ),
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        prefixIcon: Icon(Icons.search),
+                        hintText: "Search",
+                        hintStyle: TextStyle(color: Colors.black26,),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+
               //TOP TEXT AND ICONS IS HERE
 
 
@@ -71,6 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 },
                 itemCount: arrlist.length,
+
                 ),
               )
 
@@ -86,9 +109,6 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Icon(Icons.add_rounded,color: Colors.black54,),
           shape: OutlineInputBorder(borderRadius: BorderRadius.circular(30),borderSide: BorderSide(color: Colors.white)),
         ),
-
-
-
       );}
     );
   }

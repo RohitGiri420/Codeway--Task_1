@@ -62,15 +62,15 @@ class _UpdateDataState extends State<UpdateData> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("UPDATE NOTES",style: TextStyle(fontSize: 37,fontWeight: FontWeight.w900,fontFamily: 'f1',color: Colors.black54)),
-            SizedBox(height: 30,),
+            SizedBox(height: 20,),
             UiHelper.CustomTextField("Title *",UpdatedTitleController),
-            SizedBox(height: 30,),
+            SizedBox(height: 20,),
             UiHelper.CustomTextField("Description", UpdatedDescController),
-            SizedBox(height: 30,),
+            SizedBox(height: 20,),
             UiHelper.CustomButton("Update Note",() {
               UpdateNote(UpdatedTitleController.text.toString(), UpdatedDescController.text.toString(),widget.id);
             },),
-            SizedBox(height: 100,)
+            SizedBox(height: 80,)
 
           ],
         ),
